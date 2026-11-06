@@ -17,7 +17,13 @@ const projects = await getCollection('projects');
       <p class="eyebrow"><span class="status-dot"></span> {role}</p>
       <h1 id="nombre">Enrique<br />Laguna<span class="period">.</span></h1>
       <p class="hero-summary">Desarrollo backend y full-stack. Trabajo con servicios, APIs e interfaces que ayudan a los equipos a operar sus sistemas.</p>
-      <a class="button" href="#proyectos">Ver proyectos <span aria-hidden="true">↓</span></a>
+      <div class="hero-actions">
+        <a class="button" href="#proyectos">Ver proyectos <span aria-hidden="true">↓</span></a>
+        <div class="hero-links">
+          <a class="text-link" href="https://github.com/EnriqueLaguna">GitHub <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="/cv-enrique-laguna.pdf">Ver CV (PDF)</a>
+        </div>
+      </div>
     </div>
     <LogIllustration />
   </section>

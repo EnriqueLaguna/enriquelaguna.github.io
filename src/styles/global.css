@@ -126,6 +126,17 @@ h1, h2, h3 {
   background: var(--accent);
 }
 
+.hero-actions, .hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem 1rem;
+}
+
+.hero-actions { margin-top: 1.5rem; }
+.hero-actions .button { margin-top: 0; }
+.hero-links a { min-height: 2.75rem; }
+
 .log-figure { width: 100%; }
 
 .log-grid {
