@@ -1,0 +1,12 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { name } from '../site';
+---
+
+<SiteLayout title={`Página no encontrada · ${name}`} description="Esta página del portafolio no está disponible.">
+  <section class="case-study not-found">
+    <p class="eyebrow"><span class="status-dot"></span> Error 404</p>
+    <h1>Página no encontrada</h1>
+    <a class="button" href="/"><span aria-hidden="true">←</span> Volver al inicio</a>
+  </section>
+</SiteLayout>

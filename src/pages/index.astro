@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import LogIllustration from '../components/LogIllustration.astro';
+import TechnologyList from '../components/TechnologyList.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { name, role } from '../site';
+
+const projects = await getCollection('projects');
+---
+
+<SiteLayout
+  title={`${name} · ${role}`}
+  description="Portafolio de Enrique Laguna, ingeniero de software enfocado en desarrollo backend y full-stack."
+>
+  <section class="hero" aria-labelledby="nombre">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="status-dot"></span> {role}</p>
+      <h1 id="nombre">Enrique<br />Laguna<span class="period">.</span></h1>
+      <p class="hero-summary">Desarrollo backend y full-stack. Trabajo con servicios, APIs e interfaces que ayudan a los equipos a operar sus sistemas.</p>
+      <a class="button" href="#proyectos">Ver proyectos <span aria-hidden="true">↓</span></a>
+    </div>
+    <LogIllustration />
+  </section>
+
+  <section class="work" id="proyectos" aria-labelledby="titulo-proyectos">
+    <p class="eyebrow section-label">Trabajo seleccionado</p>
+    <h2 id="titulo-proyectos">Proyectos</h2>
+    {
+      projects.map(({ id, data }) => (
+        <article class="project">
+          <p class="eyebrow project-organization">{data.organization} <span>· Caso de estudio</span></p>
+          <div class="project-detail">
+            <h3>{data.title}</h3>
+            <p>{data.summary}</p>
+            <TechnologyList technologies={data.technologies} />
+            <a class="text-link" href={`/proyectos/${id}/`}>
+              Leer el caso <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+      ))
+    }
+  </section>
+</SiteLayout>

@@ -1,0 +1,41 @@
+---
+import { name } from '../site';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <header class="site-header shell">
+      <a class="wordmark" href="/" aria-label={`${name}, inicio`}>
+        <img src="/favicon.svg" alt="" width="33" height="33" />
+        <span>{name}</span>
+      </a>
+      <nav aria-label="Principal">
+        <a class="nav-link" href="/#proyectos">Proyectos</a>
+      </nav>
+    </header>
+    <main id="contenido" class="shell" tabindex="-1">
+      <slot />
+    </main>
+    <footer class="site-footer shell">
+      <span>{name}</span>
+      <span>Portafolio de ingeniería de software</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import TechnologyList from '../../components/TechnologyList.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { name } from '../../site';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { title, organization, summary, technologies } = project.data;
+const { Content } = await render(project);
+---
+
+<SiteLayout title={`${title} · ${name}`} description={summary}>
+  <article class="case-study">
+    <a class="text-link back-link" href="/#proyectos"><span aria-hidden="true">←</span> Todos los proyectos</a>
+    <header class="case-header">
+      <p class="eyebrow"><span class="status-dot"></span> {organization} · Caso de estudio</p>
+      <h1>{title}</h1>
+      <p class="case-summary">{summary}</p>
+      <TechnologyList technologies={technologies} />
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</SiteLayout>

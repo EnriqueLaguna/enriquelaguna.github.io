@@ -1,0 +1,19 @@
+# Dependencias y archivos generados
+node_modules/
+dist/
+.astro/
+
+# Variables de entorno y credenciales locales
+.env
+.env.*
+.envrc
+.npmrc
+secrets/
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Archivos locales y registros
+.DS_Store
+*.log
